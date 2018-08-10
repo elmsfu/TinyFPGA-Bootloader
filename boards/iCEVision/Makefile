@@ -17,8 +17,8 @@
 PROJ = bootloader
 
 PIN_DEF = pins.pcf
-DEVICE = lp8k
-PKG = cm81
+DEVICE = 5k
+PKG = sg48
 
 all: $(PROJ).rpt fw.bin
 
@@ -26,7 +26,7 @@ all: $(PROJ).rpt fw.bin
 	yosys -p 'synth_ice40 -top $(PROJ) -blif $@' $^
 
 %.asc: $(PIN_DEF) %.blif
-	arachne-pnr -d 8k -P $(PKG) -o $@ -p $^
+	arachne-pnr -d 5k -P $(PKG) -o $@ -p $^
 
 %.bin: %.asc
 	icepack $< $@

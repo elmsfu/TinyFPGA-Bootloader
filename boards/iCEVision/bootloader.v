@@ -3,7 +3,7 @@ module bootloader (
 
   inout  pin_usbp,
   inout  pin_usbn,
-  output pin_pu,
+  //output pin_pu,
 
   output pin_led,
 
@@ -97,7 +97,7 @@ module bootloader (
     .boot(boot)
   );
 
-  assign pin_pu = 1'b1;
+  //assign pin_pu = 1'b1;
   assign pin_usbp = usb_tx_en ? usb_p_tx : 1'bz;
   assign pin_usbn = usb_tx_en ? usb_n_tx : 1'bz;
   assign usb_p_rx = usb_tx_en ? 1'b1 : pin_usbp;
