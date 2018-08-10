@@ -21,11 +21,13 @@ module bootloader (
   ////////////////////////////////////////////////////////////////////////////////
   wire clk_48mhz;
 
+  // for BX 16MHz*(47+1)/(2^4 * (0+1)) = 48MHz
+  // for iCEVision 24MHz*(31+1)/(2^4 * (0+1)) = 48MHz
   SB_PLL40_CORE #(
-    .DIVR(4'b0000),
-    .DIVF(7'b0101111),
-    .DIVQ(3'b100),
-    .FILTER_RANGE(3'b001),
+    .DIVR(4'b0000),        // 0
+    .DIVF(7'b0011111),     // 31
+    .DIVQ(3'b100),         // 4
+    .FILTER_RANGE(3'b001), // 1
     .FEEDBACK_PATH("SIMPLE"),
     .DELAY_ADJUSTMENT_MODE_FEEDBACK("FIXED"),
     .FDA_FEEDBACK(4'b0000),
